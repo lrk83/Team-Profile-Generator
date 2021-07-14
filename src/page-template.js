@@ -46,6 +46,15 @@ const generatePage = templateData => {
         <div class="card border-dark mb-3">
           <div class="card-header"><h3>${manager.getName()}</h3></div>
             <div class="card-body">
+              <div class = "row">
+              ${manager.getEmail()}
+              </div>
+              <div class = "row">
+              ${manager.getID()}
+              </div>
+              <div class = "row">
+              ${manager.getOfficeNumber()}
+              </div>
             </div>
         </div>
       </div>
