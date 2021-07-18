@@ -15,3 +15,6 @@ Once you have finished entering data, you will find your newly generated HTML fi
 
 ##Screenshots
 
+![Command Line Application](https://github.com/lrk83/Team-Profile-Generator/blob/main/Screenshots/Screen%20Shot%202021-07-18%20at%202.37.36%20PM.png)
+
+![HTML page](https://github.com/lrk83/Team-Profile-Generator/blob/main/Screenshots/Screen%20Shot%202021-07-18%20at%202.37.53%20PM.png)
