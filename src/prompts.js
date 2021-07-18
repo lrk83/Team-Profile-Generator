@@ -1,5 +1,10 @@
 const inquirer = require('inquirer');
 
+const validateEmail = (email) =>{
+    let re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
 const promptUser = () => {
     return inquirer.prompt([
         {
@@ -10,7 +15,7 @@ const promptUser = () => {
                 if (managerNameInput) {
                     return true;
                 }else {
-                    console.log('Please enter a name!');
+                    console.log(' Please enter a name!');
                     return false;
                 }
             }
@@ -23,7 +28,7 @@ const promptUser = () => {
                 if (managerIDInput) {
                     return true;
                 }else {
-                    console.log('Please enter and ID number!');
+                    console.log(' Please enter and ID number!');
                     return false;
                 }
             }
@@ -33,12 +38,15 @@ const promptUser = () => {
             name: 'managerEmail',
             message: "please enter the team manager's email",
             validate: managerEmailInput => {
-                if (managerEmailInput) {
+                if (managerEmailInput && validateEmail(managerEmailInput)) {
                     return true;
-                }else {
-                    console.log('Please enter an email!');
+                }else if (!managerEmailInput){
+                    console.log(' Please enter an email!');
                     return false;
-                }
+                } else {
+                    console.log(" Please enter a valid email!");
+                    return false;
+                };
             }
         },
         {
@@ -49,7 +57,7 @@ const promptUser = () => {
                 if (managerOfficeInput) {
                     return true;
                 }else {
-                    console.log('Please enter an office number!');
+                    console.log(' Please enter an office number!');
                     return false;
                 }
             }
@@ -83,7 +91,7 @@ const promptMember = teamData => {
                                 if (engineerNameInput) {
                                     return true;
                                 }else {
-                                    console.log("Please enter the engineer's name!");
+                                    console.log(" Please enter the engineer's name!");
                                     return false;
                                 }
                             }
@@ -96,7 +104,7 @@ const promptMember = teamData => {
                                 if (engineerIDInput) {
                                     return true;
                                 }else {
-                                    console.log('Please enter an ID number!');
+                                    console.log(' Please enter an ID number!');
                                     return false;
                                 }
                             }
@@ -106,12 +114,15 @@ const promptMember = teamData => {
                             name: 'engineerEmail',
                             message: "please enter the engineer's email",
                             validate: engineerEmailInput => {
-                                if (engineerEmailInput) {
+                                if (engineerEmailInput && validateEmail(engineerEmailInput)) {
                                     return true;
-                                }else {
-                                    console.log('Please enter an email!');
+                                }else if (!engineerEmailInput){
+                                    console.log(' Please enter an email!');
                                     return false;
-                                }
+                                } else {
+                                    console.log(" Please enter a valid email!");
+                                    return false;
+                                };
                             }
                         },
                         {
@@ -122,15 +133,15 @@ const promptMember = teamData => {
                                 if (engineerGithubInput) {
                                     return true;
                                 }else {
-                                    console.log('Please enter a username!');
+                                    console.log(' Please enter a username!');
                                     return false;
                                 }
                             }
                         },
                         {
                             type: 'confirm',
-                            name: 'confirmAddProject',
-                            message: 'Would you like to enter another project?',
+                            name: 'confirmAddMember',
+                            message: 'Would you like to add another team member to the project?',
                             default: false
                         }
                     ])
@@ -144,7 +155,7 @@ const promptMember = teamData => {
                                 if (internNameInput) {
                                     return true;
                                 }else {
-                                    console.log("Please enter the intern's name!");
+                                    console.log(" Please enter the intern's name!");
                                     return false;
                                 }
                             }
@@ -157,7 +168,7 @@ const promptMember = teamData => {
                                 if (internIDInput) {
                                     return true;
                                 }else {
-                                    console.log('Please enter an ID number!');
+                                    console.log(' Please enter an ID number!');
                                     return false;
                                 }
                             }
@@ -167,12 +178,15 @@ const promptMember = teamData => {
                             name: 'internEmail',
                             message: "please enter the intern's email",
                             validate: internEmailInput => {
-                                if (internEmailInput) {
+                                if (internEmailInput && validateEmail(internEmailInput)) {
                                     return true;
-                                }else {
-                                    console.log('Please enter an email!');
+                                }else if (!internEmailInput){
+                                    console.log(' Please enter an email!');
                                     return false;
-                                }
+                                } else {
+                                    console.log(" Please enter a valid email!");
+                                    return false;
+                                };
                             }
                         },
                         {
@@ -183,22 +197,22 @@ const promptMember = teamData => {
                                 if (internSchoolInput) {
                                     return true;
                                 }else {
-                                    console.log('Please enter a school!');
+                                    console.log(' Please enter a school!');
                                     return false;
                                 }
                             }
                         },
                         {
                             type: 'confirm',
-                            name: 'confirmAddProject',
-                            message: 'Would you like to enter another team member to the project?',
+                            name: 'confirmAddMember',
+                            message: 'Would you like to add another team member to the project?',
                             default: false
                         }
                     ])
                 }
             }).then(memberData => {
             teamData.members.push(memberData);
-            if (memberData.confirmAddProject){
+            if (memberData.confirmAddMember){
                 return promptMember(teamData);
             }else{
                 return teamData;

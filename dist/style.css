@@ -1,6 +1,42 @@
 h1 {
+    border-radius: 5px;
+    padding: 10px;
     width: 100%;
     color: aliceblue;
-    background-color: red;
+    background-color: rgb(240,128,128);
     border: black 1px solid;
+    text-align: center;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-body {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.header-container{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.card-body .row {
+    padding: 5px;
+}
+
+.row {
+    flex-wrap: wrap;
+}
+
+.myflexcol{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card{
+    margin: 10px;
+    min-width: 200px;
 }
