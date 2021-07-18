@@ -10,7 +10,7 @@ const writeFile = fileContent => {
 
             resolve({
                 ok: true,
-                message: "File created!"
+                message: "File created! Check dist/index.html for your new team!"
             });
         });
     });
